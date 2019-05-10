@@ -27,6 +27,7 @@
 		AA79DD631C99C01C0098CD0D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA79DD621C99C01C0098CD0D /* Default-568h@2x.png */; };
 		AFEF852A19F082EB00C5C416 /* bucket.png in Resources */ = {isa = PBXBuildFile; fileRef = AFEF852819F082EB00C5C416 /* bucket.png */; };
 		AFEF852B19F082EB00C5C416 /* apple.png in Resources */ = {isa = PBXBuildFile; fileRef = AFEF852919F082EB00C5C416 /* apple.png */; };
+		ED2A85EC2284816F00F80581 /* Pet.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2A85EB2284816F00F80581 /* Pet.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,8 @@
 		AA79DD621C99C01C0098CD0D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		AFEF852819F082EB00C5C416 /* bucket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bucket.png; sourceTree = "<group>"; };
 		AFEF852919F082EB00C5C416 /* apple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apple.png; sourceTree = "<group>"; };
+		ED2A85EA2284816F00F80581 /* Pet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Pet.h; sourceTree = "<group>"; };
+		ED2A85EB2284816F00F80581 /* Pet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Pet.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +135,8 @@
 				602CAE4F1984363800C9FE49 /* LPGAppDelegate.h */,
 				602CAE501984363800C9FE49 /* LPGAppDelegate.m */,
 				602CAE521984363800C9FE49 /* Main.storyboard */,
+				ED2A85EA2284816F00F80581 /* Pet.h */,
+				ED2A85EB2284816F00F80581 /* Pet.m */,
 				602CAE551984363800C9FE49 /* LPGViewController.h */,
 				602CAE561984363800C9FE49 /* LPGViewController.m */,
 				602CAE581984363900C9FE49 /* Images.xcassets */,
@@ -218,6 +223,9 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Lighthouse Labs";
 				TargetAttributes = {
+					602CAE3C1984363700C9FE49 = {
+						ProvisioningStyle = Manual;
+					};
 					602CAE5D1984363900C9FE49 = {
 						TestTargetID = 602CAE3C1984363700C9FE49;
 					};
@@ -228,6 +236,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -275,6 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				602CAE571984363800C9FE49 /* LPGViewController.m in Sources */,
+				ED2A85EC2284816F00F80581 /* Pet.m in Sources */,
 				602CAE511984363800C9FE49 /* LPGAppDelegate.m in Sources */,
 				602CAE4D1984363700C9FE49 /* main.m in Sources */,
 			);
@@ -401,11 +411,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Phonagotchi/Phonagotchi-Prefix.pch";
 				INFOPLIST_FILE = "Phonagotchi/Phonagotchi-Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LighthouseLabs.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -414,11 +427,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Phonagotchi/Phonagotchi-Prefix.pch";
 				INFOPLIST_FILE = "Phonagotchi/Phonagotchi-Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LighthouseLabs.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
