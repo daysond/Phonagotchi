@@ -28,6 +28,9 @@
 		AFEF852A19F082EB00C5C416 /* bucket.png in Resources */ = {isa = PBXBuildFile; fileRef = AFEF852819F082EB00C5C416 /* bucket.png */; };
 		AFEF852B19F082EB00C5C416 /* apple.png in Resources */ = {isa = PBXBuildFile; fileRef = AFEF852919F082EB00C5C416 /* apple.png */; };
 		ED2A85EC2284816F00F80581 /* Pet.m in Sources */ = {isa = PBXBuildFile; fileRef = ED2A85EB2284816F00F80581 /* Pet.m */; };
+		ED6758982288DE2300F0D556 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED6758972288DE2300F0D556 /* CoreMotion.framework */; };
+		ED67589A2288E49100F0D556 /* Cat-sound-effect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ED6758992288E49100F0D556 /* Cat-sound-effect.mp3 */; };
+		ED67589C2288E55600F0D556 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED67589B2288E55600F0D556 /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +71,9 @@
 		AFEF852919F082EB00C5C416 /* apple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apple.png; sourceTree = "<group>"; };
 		ED2A85EA2284816F00F80581 /* Pet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Pet.h; sourceTree = "<group>"; };
 		ED2A85EB2284816F00F80581 /* Pet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Pet.m; sourceTree = "<group>"; };
+		ED6758972288DE2300F0D556 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		ED6758992288E49100F0D556 /* Cat-sound-effect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Cat-sound-effect.mp3"; sourceTree = "<group>"; };
+		ED67589B2288E55600F0D556 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +81,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED67589C2288E55600F0D556 /* AVFoundation.framework in Frameworks */,
+				ED6758982288DE2300F0D556 /* CoreMotion.framework in Frameworks */,
 				602CAE431984363700C9FE49 /* CoreGraphics.framework in Frameworks */,
 				602CAE451984363700C9FE49 /* UIKit.framework in Frameworks */,
 				602CAE411984363700C9FE49 /* Foundation.framework in Frameworks */,
@@ -116,6 +124,8 @@
 		602CAE3F1984363700C9FE49 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ED67589B2288E55600F0D556 /* AVFoundation.framework */,
+				ED6758972288DE2300F0D556 /* CoreMotion.framework */,
 				602CAE401984363700C9FE49 /* Foundation.framework */,
 				602CAE421984363700C9FE49 /* CoreGraphics.framework */,
 				602CAE441984363700C9FE49 /* UIKit.framework */,
@@ -132,6 +142,7 @@
 				607C5D311985A13300501387 /* default.png */,
 				607C5D321985A13300501387 /* sleeping.png */,
 				607C5D331985A13300501387 /* grumpy.png */,
+				ED6758992288E49100F0D556 /* Cat-sound-effect.mp3 */,
 				602CAE4F1984363800C9FE49 /* LPGAppDelegate.h */,
 				602CAE501984363800C9FE49 /* LPGAppDelegate.m */,
 				602CAE521984363800C9FE49 /* Main.storyboard */,
@@ -264,6 +275,7 @@
 				607C5D341985A13300501387 /* default.png in Resources */,
 				607C5D361985A13300501387 /* grumpy.png in Resources */,
 				AFEF852B19F082EB00C5C416 /* apple.png in Resources */,
+				ED67589A2288E49100F0D556 /* Cat-sound-effect.mp3 in Resources */,
 				AFEF852A19F082EB00C5C416 /* bucket.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

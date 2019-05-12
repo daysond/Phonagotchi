@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreMotion/CoreMotion.h>
+
+
 
 @interface LPGViewController : UIViewController
 

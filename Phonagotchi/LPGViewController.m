@@ -9,7 +9,7 @@
 #import "LPGViewController.h"
 #import "Pet.h"
 
-@interface LPGViewController ()
+@interface LPGViewController () <UpdateStatusDelegate>
 
 @property (nonatomic) UIImageView *petImageView;
 @property (nonatomic) UIImageView *bucketImageView;
@@ -17,6 +17,7 @@
 @property (nonatomic) UIImageView *secondApple;
 @property (nonatomic) UIPanGestureRecognizer *panRecog;
 @property (nonatomic) UIPanGestureRecognizer *panRecogForFeeding;
+@property (nonatomic) UITapGestureRecognizer *tapRecog;
 @property (nonatomic) Pet *pet;
 
 @end
@@ -28,6 +29,8 @@
     [super viewDidLoad];
     
     self.pet = [Pet new];
+    
+    self.pet.updateStatusDelegate = self;
 	
     self.view.backgroundColor = [UIColor colorWithRed:(252.0/255.0) green:(240.0/255.0) blue:(228.0/255.0) alpha:1.0];
     
@@ -80,10 +83,15 @@
     
     self.panRecog = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(petting)];
     self.panRecogForFeeding = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(feeding)];
+    self.tapRecog = [[UITapGestureRecognizer alloc]initWithTarget:self.pet action:@selector(makeNoise)];
+    [self.tapRecog setNumberOfTapsRequired:2];
 
     [self.petImageView addGestureRecognizer:self.panRecog];
+    [self.petImageView addGestureRecognizer:self.tapRecog];
     [self.appleImageView addGestureRecognizer:self.panRecogForFeeding];
 }
+
+#pragma mark - private methods
 
 -(void)petting {
     [self.pet beingPetted:[self.panRecog velocityInView:self.petImageView]];
@@ -136,6 +144,29 @@
     
     
 }
+
+#pragma mark - shake motion
+
+-(void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event {
+    
+    if (event.type == UIEventSubtypeMotionShake) {
+        self.pet.isAsleep = NO;
+        self.petImageView.image = [UIImage imageNamed:@"default"];
+        [self.pet.timer invalidate];
+        self.pet.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self.pet selector:@selector(minusRestfulness) userInfo:nil repeats:YES];
+    }
+}
+
+#pragma mark - delegate
+
+- (void)updatePetImageWithPetStatus:(BOOL)petStatus {
+    if (self.pet.isAsleep) {
+        self.petImageView.image = [UIImage imageNamed:@"sleeping"];
+    } else {
+        self.petImageView.image = [UIImage imageNamed:@"default"];
+    }
+}
+
 
 
 @end
