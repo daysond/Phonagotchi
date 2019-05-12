@@ -14,11 +14,9 @@
 @property (nonatomic) UIImageView *petImageView;
 @property (nonatomic) UIImageView *bucketImageView;
 @property (nonatomic) UIImageView *appleImageView;
-@property (nonatomic) UIImageView *anotherApple;
+@property (nonatomic) UIImageView *secondApple;
 @property (nonatomic) UIPanGestureRecognizer *panRecog;
 @property (nonatomic) UIPanGestureRecognizer *panRecogForFeeding;
-@property (nonatomic) UIPanGestureRecognizer *panRecogForNewApple;
-@property (nonatomic) NSArray <NSLayoutConstraint*> *appleImageConstraints;
 @property (nonatomic) Pet *pet;
 
 @end
@@ -70,19 +68,13 @@
     self.appleImageView.translatesAutoresizingMaskIntoConstraints = NO;
     self.appleImageView.image = [UIImage imageNamed:@"apple"];
     [self.view addSubview:self.appleImageView];
-    
+
     [NSLayoutConstraint activateConstraints:@[[self.appleImageView.centerXAnchor constraintEqualToAnchor:self.bucketImageView.centerXAnchor],
-                                              [self.appleImageView.centerYAnchor constraintEqualToAnchor:self.bucketImageView.centerYAnchor],
-                                              [self.appleImageView.widthAnchor constraintEqualToConstant:50],
-                                              [self.appleImageView.heightAnchor constraintEqualToConstant:50]
-                                              ]];
+                                                                                     [self.appleImageView.centerYAnchor constraintEqualToAnchor:self.bucketImageView.centerYAnchor],
+                                                                                     [self.appleImageView.widthAnchor constraintEqualToConstant:50],
+                                                                                     [self.appleImageView.heightAnchor constraintEqualToConstant:50]
+                                                                                     ]];
     
-    UIImageView *newApple = [[UIImageView alloc]initWithFrame:CGRectZero];
-    newApple.translatesAutoresizingMaskIntoConstraints = NO;
-    newApple.image = [UIImage imageNamed:@"apple"];
-    self.anotherApple = newApple;
-    
-//    [self.anotherApple setUserInteractionEnabled:YES];
     [self.petImageView setUserInteractionEnabled:YES];
     [self.appleImageView setUserInteractionEnabled:YES];
     
@@ -107,30 +99,38 @@
 -(void)feeding {
   
     if (self.panRecogForFeeding.state == UIGestureRecognizerStateBegan) {
-        [self.view addSubview:self.anotherApple];
+        UIImageView *newApple = [[UIImageView alloc]initWithFrame:CGRectZero];
+        newApple.translatesAutoresizingMaskIntoConstraints = NO;
+        newApple.image = [UIImage imageNamed:@"apple"];
+        self.secondApple = newApple;
+        [self.view addSubview:newApple];
+        [self.view setNeedsLayout];
         [NSLayoutConstraint activateConstraints:@[
-                                                  [self.anotherApple.centerXAnchor constraintEqualToAnchor:self.bucketImageView.centerXAnchor],
-                                                  [self.anotherApple.centerYAnchor constraintEqualToAnchor:self.bucketImageView.centerYAnchor],
-                                                  [self.anotherApple.widthAnchor constraintEqualToConstant:50],
-                                                  [self.anotherApple.heightAnchor constraintEqualToConstant:50]
+                                                  [newApple.centerXAnchor constraintEqualToAnchor:self.bucketImageView.centerXAnchor],
+                                                  [newApple.centerYAnchor constraintEqualToAnchor:self.bucketImageView.centerYAnchor],
+                                                  [newApple.widthAnchor constraintEqualToConstant:50],
+                                                  [newApple.heightAnchor constraintEqualToConstant:50]
                                                   ]];
-        
     }
+    
     if (self.panRecogForFeeding.state == UIGestureRecognizerStateChanged) {
         CGPoint touchLocation = [self.panRecogForFeeding locationInView:self.view];
-        self.appleImageView.center = touchLocation;
+        self.secondApple.center = touchLocation;
     }
     
     if (self.panRecogForFeeding.state == UIGestureRecognizerStateEnded) {
         CGPoint touchLocation = [self.panRecogForFeeding locationInView:self.view];
         if (CGRectContainsPoint(self.petImageView.frame, touchLocation)) {
             [UIView animateWithDuration:1
-                             animations:^{self.appleImageView.alpha = 0;}
-                             completion:^(BOOL finished)
-                                {self.appleImageView.center = self.bucketImageView.center;
-                                 self.appleImageView.alpha = 1;}];
+                             animations:^{self.secondApple.alpha = 0;}
+                             completion:^(BOOL finished){[self.secondApple removeFromSuperview];}];
         } else {
-            self.appleImageView.center = CGPointMake(touchLocation.x, self.view.frame.size.height - touchLocation.y + 25);
+            
+            [UIView animateWithDuration:2
+                             animations:^{
+                 CGPoint touchLocation = [self.panRecogForFeeding locationInView:self.view];
+                self.secondApple.center = CGPointMake(touchLocation.x, self.view.center.y + 500);}
+                             completion:^(BOOL finished){[self.secondApple removeFromSuperview];}];
         }
     }
     
