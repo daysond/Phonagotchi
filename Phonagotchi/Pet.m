@@ -25,7 +25,7 @@
         _isGrumpy = NO;
         _isAsleep = NO;
         _restfulness = 60;
-        _timer = self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(minusRestfulness) userInfo:nil repeats:YES];
+        _timer = self.timer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(minusRestfulness) userInfo:nil repeats:YES];
         
     }
     return self;
